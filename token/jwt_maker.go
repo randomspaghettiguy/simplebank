@@ -35,7 +35,7 @@ func (maker *JWTMaker) CreateToken(username string, role string, duration time.D
 	token, err := jwtToken.SignedString([]byte(maker.secretKey))
 	return token, payload, err
 }
-
+	
 // VerifyToken implements Maker.
 func (maker *JWTMaker) VerifyToken(token string) (*Payload, error) {
 	keyFunc := func(token *jwt.Token) (interface{}, error) {

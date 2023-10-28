@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	db "simplebank/db/sqlc"
-	"simplebank/db/util"
+	"simplebank/util"
 	"testing"
 
 	mockdb "simplebank/db/mock"

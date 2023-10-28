@@ -10,7 +10,7 @@ import (
 	"reflect"
 	mockdb "simplebank/db/mock"
 	db "simplebank/db/sqlc"
-	"simplebank/db/util"
+	"simplebank/util"
 	"testing"
 
 	"github.com/gin-gonic/gin"
