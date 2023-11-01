@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package pb;
+package simplebank;
 
 import "user.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "~/go/src/simplebank";
+option go_package = ".;pb";
 
 message LoginUserRequest {
     string username = 1;
