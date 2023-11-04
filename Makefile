@@ -3,6 +3,7 @@ postgres:
 
 createdb:
 	docker exec -it postgres16 createdb --username=root --owner=root simple_bank
+
 dropdb:
 	docker exec -it postgres16 dropdb simple_bank
 
@@ -30,11 +31,16 @@ server:
 mock:
 	mockgen -destination db/mock/store.go simplebank/db/sqlc Store
 
+clean:
+	remove-Item C:\Users\thinh\go\src\simplebank\pb\*.go
+	remove-Item C:\Users\thinh\go\src\simplebank\doc\swagger\*.swagger.json
+
 proto:
 	protoc --proto_path=proto --go_out=pb --go_opt=paths=source_relative \
 	--go-grpc_out=pb --go-grpc_opt=paths=source_relative \
 	--grpc-gateway_out=pb --grpc-gateway_opt=paths=source_relative \
+	--openapiv2_out=doc/swagger --openapiv2_opt=allow_merge=true,merge_file_name=simplebank \
 	proto/*.proto
 	
-.PHONY: postgres createdb dropdb migrateup migrateup1 migratedown migratedown1 sqlc test server mock proto
+.PHONY: postgres createdb dropdb migrateup migrateup1 migratedown migratedown1 sqlc test server mock clean proto
 
